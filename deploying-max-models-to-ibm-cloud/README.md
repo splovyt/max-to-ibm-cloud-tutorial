@@ -1,4 +1,4 @@
-# MAX to IBM Cloud Deployment Tutorial
+# Deploying MAX models to IBM Cloud
 
 Looking to deploy a MAX model to IBM Cloud? Smart!
 
@@ -22,15 +22,15 @@ If you don't already have one, go to [https://cloud.ibm.com/registration](https:
 
 - Find the [Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster) in the Cloud Catalog. Click `Create` or `Create Resource` to add the `Kubernetes Service` to your resources. The [Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster) should look something like this (but is subject to change).
 
-![](docs/2a.png)
+![](images/2a.png)
 
 - Select the `Free` cluster type, and specify the cluster name and physical location. In this tutorial, we will name the cluster 'max-deployment-cluster'. When done, click `Create Cluster` to confirm.
 
-![](docs/2b.png)
+![](images/2b.png)
 
 - Your Kubernetes Cluster is now being installed on IBM Cloud. You can follow the progress bar at the top of the page (see the red arrow on the picture below). Next, we will go over the instructions detailed on this page to get access to the cluster.
 
-![](docs/2c.png)
+![](images/2c.png)
 
 **Install the IBM Cloud CLI and Kubernetes CLI**
 
@@ -54,7 +54,7 @@ Fortunately, both of these command-line tools can be installed at the same time 
 
 Now that we have installed the IBM Cloud communication tools, we are nearly there. However, we still need to log in to IBM Cloud on our local machine, and specify what cluster we are targeting in the cloud. All these instructions are also available under the `Access tab` on the online page of the kubernetes cluster we have just created.
 
-![](docs/2d.png)
+![](images/2d.png)
 
 - Log in to the cluster from your local machine
 
@@ -112,7 +112,7 @@ Let's download the model's repository, which contains the YAML configuration fil
  
  - Navigate to the http://<PUBLIC_IP>:<PORT> address in your browser. You should find the API frontend as shown below.
  
-![](docs/3a.png)
+![](images/3a.png)
  
 The MAX model is now permanently available. Done!
 
