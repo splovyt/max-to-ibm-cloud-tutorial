@@ -1,6 +1,7 @@
 # MAX to IBM Cloud Deployment Tutorial
 
 Looking to deploy a MAX model to IBM Cloud? Smart!
+
 Fortunately, it's not only easy, but also free. 
 
 
