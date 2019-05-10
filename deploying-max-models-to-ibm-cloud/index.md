@@ -73,7 +73,7 @@ This tutorial consists of the following steps:
 
 ### 1. Creating an IBM Cloud account
 
-If you don't already have one, go to [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration) to sign up for a free IBM Cloud account. The registration process is no different than the usual, so no further explanation is required. Log in to your cloud dashboard when you're done.
+If you don't already have one, go to [https://cloud.ibm.com/registration](http://ibm.biz/CloudSignup) to sign up for a free IBM Cloud account. The registration process is no different than the usual, so no further explanation is required. Log in to your cloud dashboard when you're done.
 
 ### 2. Setting up a Kubernetes cluster
 
@@ -123,7 +123,7 @@ Let's execute the instructions.
     `ibmcloud login -a https://cloud.ibm.com`
 
 
-- Specify the Kubernetes Service region in which you want to work. Our cluster is in US South.
+- Set the IBM Cloud region to the Kubernetes Service region you have selected in step 2. Our cluster is in US South, but information on other regions can be found [here](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones). 
 
     `ibmcloud ks region-set us-south`
 
