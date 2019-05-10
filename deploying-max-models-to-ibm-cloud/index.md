@@ -138,6 +138,7 @@ NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gav
 
 
 - Verify that you can connect to your cluster by listing your worker nodes.
+
   `kubectl get nodes`
 
 
