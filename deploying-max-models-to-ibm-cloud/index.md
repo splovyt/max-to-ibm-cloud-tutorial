@@ -101,11 +101,11 @@ Fortunately, both of these command-line tools can be installed at the same time 
 
 * For **Mac and Linux**, run the following command and follow the instructions:
 
-    `curl -sL https://ibm.biz/idt-installer | bash`
+    ```curl -sL https://ibm.biz/idt-installer | bash```
 
 * For **Windows**, run the following command as administrator and follow the instructions:
 
-    `Set-ExecutionPolicy Unrestricted; iex(New-Object Net.WebClient).DownloadString('http://ibm.biz/idt-win-installer')`
+    ```Set-ExecutionPolicy Unrestricted; iex(New-Object Net.WebClient).DownloadString('http://ibm.biz/idt-win-installer')```
 
 *If you are having trouble, or need more information, navigate to the installation instructions [here](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli) (or search for 'IBM Cloud CLI' on the web).*
 
@@ -120,26 +120,26 @@ Let's execute the instructions.
 
 - Log in to the cluster from your local machine
 
-    `ibmcloud login -a https://cloud.ibm.com`
+    ```ibmcloud login -a https://cloud.ibm.com```
 
 
 - Set the IBM Cloud region to the Kubernetes Service region you have selected in step 2. Our cluster is in US South, but information on other regions can be found [here](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones). 
 
-    `ibmcloud ks region-set us-south`
+    ```ibmcloud ks region-set us-south```
 
 
 - Get the command to set the environment variable and download the Kubernetes configuration files to the cluster. 
 NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gave your cluster earlier.
 
-    `ibmcloud ks cluster-config max-deployment-cluster`
+    ```ibmcloud ks cluster-config max-deployment-cluster```
 
 
-- Copy the output from the previous command and paste it in your terminal. The command starts with `export KUBECONFIG=...`. This command needs to be executed because it exports the required `KUBECONFIG` environment variable. 
+- Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it exports the required ```KUBECONFIG``` environment variable. 
 
 
 - Verify that you can connect to your cluster by listing your worker nodes.
 
-  `kubectl get nodes`
+  ```kubectl get nodes```
 
 
 We are now ready for the final step of the deployment.
@@ -151,30 +151,30 @@ The actual deployment process is very short. Now that the connection with the re
 
 Let's download the model's repository, which contains the YAML configuration file.
 
-- Clone the MAX-Model repository from GitHub. This example shows how to do this for the MAX-Object-Detector, but feel free to replace `MAX-Object-Detector` with your MAX Model of choice.
+- Clone the MAX-Model repository from GitHub. This example shows how to do this for the MAX-Object-Detector, but feel free to replace ```MAX-Object-Detector``` with your MAX Model of choice.
 
-    `git clone https://github.com/IBM/MAX-Object-Detector.git`
+    ```git clone https://github.com/IBM/MAX-Object-Detector.git```
 
 - Find the YAML file in the downloaded directory.
 
-    `cd MAX-Object-Detector`
+    ```cd MAX-Object-Detector```
     
-    `ls *.yaml`
+    ```ls *.yaml```
 
-- Apply the configuration file to our Kubernetes cluster. Again, replace the `max-object-detector.yaml` with the `.yaml` file corresponding to your model. This command deploys the model.
+- Apply the configuration file to our Kubernetes cluster. Again, replace the ```max-object-detector.yaml``` with the ```.yaml``` file corresponding to your model. This command deploys the model.
 
-    `kubectl apply -f ./max-object-detector.yaml`
+    ```kubectl apply -f ./max-object-detector.yaml```
 
 - When the model is deployed (give it some time), find the public IP address and port that the API is served on.
     - The public IP
     
-        `ibmcloud cs workers mycluster`
+        ```ibmcloud cs workers mycluster```
     
     - The port
     
-        `kubectl describe service max-text-sentiment-classifier | grep NodePort`
+        ```kubectl describe service max-text-sentiment-classifier | grep NodePort```
  
- - Navigate to the `http://<PUBLIC_IP>:<PORT>` address in your browser. You should find the API frontend as shown below.
+ - Navigate to the ```http://<PUBLIC_IP>:<PORT>``` address in your browser. You should find the API frontend as shown below.
  
     ![](images/3a.png)
  
@@ -233,11 +233,11 @@ An easy way to detect general issues with your Kubernetes cluster is to visit th
 
 - Check Kubernetes events
 
-    `kubectl get events`
+    ```kubectl get events```
 
 - Get the logs for a pod
 
-    `kubectl logs POD_NAME`
+    ```kubectl logs POD_NAME```
 
 
 **Memory issues and killed containers**
