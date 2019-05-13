@@ -82,9 +82,9 @@ This tutorial consists of the following steps:
 With an IBM Cloud account available, a Kubernetes cluster created, and the Cloud CLI installed (see [Prerequisites](#prerequisites)), the actual deployment step itself is the easiest part. Let's begin by establishing the connection between our local machine and our Kubernetes cluster.
 
 
-First, we will use the command-line interface (CLI) to log in to IBM Cloud on our local machine and specify what cluster we are targeting in the cloud. All these instructions are also available under the **Access tab** on the online page of your kubernetes cluster. Please visit this page to ensure you are working with the most up-to-date instructions.
+First, we will use the command-line interface (CLI) to log in to IBM Cloud on our local machine and specify what cluster we are targeting in the cloud. All these instructions are also available under the **Access tab** on the online page of your kubernetes cluster. Please visit this **Access tab** to ensure you are working with the most up-to-date instructions.
 
-![](images/2d.png)
+![](images/ibm-cloud-access.png)
 
 Let's execute the instructions.
 
@@ -146,7 +146,7 @@ Let's download the model's repository, which contains the YAML configuration fil
  
  - Navigate to the ```http://<PUBLIC_IP>:<PORT>``` address in your browser. You should find the API frontend as shown below.
  
-    ![](images/3a.png)
+    ![](images/object-detector-api.png)
  
 The MAX model is now permanently available. Congratulations!
 
