@@ -59,60 +59,30 @@ In this tutorial, we will use the Kubernetes system to deploy a cloud instance f
 
 If you are not familiar with the Model Asset Exchange, this [introductory article](https://developer.ibm.com/articles/introduction-to-the-model-asset-exchange-on-ibm-developer/) provides a good overview.
 
+Additionally, you will need the following:
+
+1. An IBM Cloud account. You can sign up [here](http://ibm.biz/CloudSignup) for a free account.
+2. An available Kubernetes cluster on your IBM Cloud account. The **free** cluster type will suffice. Create a Kubernetes cluster from the IBM Cloud catalog [here](https://cloud.ibm.com/kubernetes/catalog/cluster).
+3. The IBM Cloud command-line interface (CLI) installed. After creating a Cloud account and a Kubernetes cluster, we will need to communicate with the cluster using our local machine. Installation instructions are available [here](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli) (or by searching for 'IBM Cloud CLI' on the web).
+
 ## Estimated time
 
-It should take you approximately 45 minutes to complete this tutorial.
+With the prerequisites available, it should take you approximately 20 minutes to complete this tutorial.
 
 ## Steps
 
 This tutorial consists of the following steps:
 
-* [Creating an IBM Cloud account](#1-creating-an-ibm-cloud-account)
-* [Setting up a Kubernetes cluster](#2-setting-up-a-kubernetes-cluster)
-* [Deploying the MAX model](#3-deploying-the-max-model)
-
-### 1. Creating an IBM Cloud account
-
-If you don't already have one, go to [https://cloud.ibm.com/registration](http://ibm.biz/CloudSignup) to sign up for a free IBM Cloud account. The registration process is no different than the usual, so no further explanation is required. Log in to your cloud dashboard when you're done.
-
-### 2. Setting up a Kubernetes cluster
-
-**Create the Kubernetes Service in your IBM Cloud Dashboard**
-
-- Find the [Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster) in the Cloud Catalog. Click **Create** or **Create Resource** to add the **Kubernetes Service** to your resources. The [Kubernetes Service](https://cloud.ibm.com/kubernetes/catalog/cluster) should look something like this (but is subject to change).
-
-    ![](images/2a.png)
-
-- Select the **Free** cluster type, and specify the cluster name and physical location. In this tutorial, we will name the cluster '*max-deployment-cluster*'. When done, click **Create Cluster** to confirm.
-
-    ![](images/2b.png)
-
-- Your Kubernetes Cluster is now being installed on IBM Cloud. You can follow the progress bar at the top of the page (see the red arrow on the picture below). Next, we will go over the instructions detailed on this page to get access to the cluster.
-
-    ![](images/2c.png)
-
-**Install the IBM Cloud CLI and Kubernetes CLI**
-
-In order to be able to communicate effectively with our newly created cluster, we need to install the [IBM Cloud command-line interface (CLI)](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli). This will allow us to log in to the cloud from our local machine.
-
-Next, we will install the [Kubernetes command-line interface (CLI)](https://kubernetes.io/docs/tasks/tools/install-kubectl/), to have access to the tools needed to manage and deploy to the Kubernetes cluster after logging in to IBM Cloud.
-
-Fortunately, both of these command-line tools can be installed at the same time with one line of code!
-
-* For **Mac and Linux**, run the following command and follow the instructions:
-
-    ```curl -sL https://ibm.biz/idt-installer | bash```
-
-* For **Windows**, run the following command as administrator and follow the instructions:
-
-    ```Set-ExecutionPolicy Unrestricted; iex(New-Object Net.WebClient).DownloadString('http://ibm.biz/idt-win-installer')```
-
-*If you are having trouble, or need more information, navigate to the installation instructions [here](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli) (or search for 'IBM Cloud CLI' on the web).*
+* [Accessing the Kubernetes cluster](#1-accessing-the-kubernetes-cluster)
+* [Deploying the MAX model](#2-deploying-the-max-model)
 
 
-**Accessing the Kubernetes Cluster**
+### 1. Accessing the Kubernetes cluster
 
-Now that we have installed the IBM Cloud communication tools, we are nearly there. However, we still need to log in to IBM Cloud on our local machine and specify what cluster we are targeting in the cloud. All these instructions are also available under the **Access tab** on the online page of the kubernetes cluster we have just created.
+With an IBM Cloud account available, a Kubernetes cluster created, and the Cloud CLI installed (see [Prerequisites](#prerequisites)), the actual deployment step itself is the easiest part. Let's begin by establishing the connection between our local machine and our Kubernetes cluster.
+
+
+First, we will use the command-line interface (CLI) to log in to IBM Cloud on our local machine and specify what cluster we are targeting in the cloud. All these instructions are also available under the **Access tab** on the online page of your kubernetes cluster. Please visit this page to ensure you are working with the most up-to-date instructions.
 
 ![](images/2d.png)
 
@@ -123,13 +93,13 @@ Let's execute the instructions.
     ```ibmcloud login -a https://cloud.ibm.com```
 
 
-- Set the IBM Cloud region to the Kubernetes Service region you have selected in step 2. Our cluster is in US South, but information on other regions can be found [here](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones). 
+- Set the IBM Cloud region to the Kubernetes Service region you have selected when creating your cluster. Our cluster is in US South, but information on other regions can be found [here](https://cloud.ibm.com/docs/containers?topic=containers-regions-and-zones). 
 
     ```ibmcloud ks region-set us-south```
 
 
 - Get the command to set the environment variable and download the Kubernetes configuration files to the cluster. 
-NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gave your cluster earlier.
+NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gave your Kubernetes cluster.
 
     ```ibmcloud ks cluster-config max-deployment-cluster```
 
@@ -137,14 +107,14 @@ NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gav
 - Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it exports the required ```KUBECONFIG``` environment variable. 
 
 
-- Verify that you can connect to your cluster by listing your worker nodes.
+- Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. 
 
   ```kubectl get nodes```
 
 
 We are now ready for the final step of the deployment.
 
-### 3. Deploying the MAX model
+### 2. Deploying the MAX model
 
 The actual deployment process is very short. Now that the connection with the remote Kubernetes cluster has been set up, we merely have to apply the model's configuration file to the Kubernetes cluster to get the API up and running.
 
@@ -178,7 +148,7 @@ Let's download the model's repository, which contains the YAML configuration fil
  
     ![](images/3a.png)
  
-The MAX model is now permanently available. Done!
+The MAX model is now permanently available. Congratulations!
 
 **Some useful commands**
 
@@ -247,8 +217,7 @@ When trying to deploy a model with above-average memory requirements (for exampl
 
 ## Summary
 
-This tutorial illustrates how to deploy a model container from the Model Asset Exchange to IBM Cloud using Kubernetes. The three steps followed are:
+This tutorial illustrates how to deploy a model container from the Model Asset Exchange to IBM Cloud using Kubernetes. The two steps followed are:
 
-* [Creating an IBM Cloud account](#1-creating-an-ibm-cloud-account)
-* [Setting up a Kubernetes cluster](#2-setting-up-a-kubernetes-cluster)
-* [Deploying the MAX model](#3-deploying-the-max-model)
+* [Accessing the Kubernetes cluster](#1-accessing-the-kubernetes-cluster)
+* [Deploying the MAX model](#2-deploying-the-max-model)
