@@ -112,7 +112,7 @@ NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gav
 - Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it exports the required ```KUBECONFIG``` environment variable. 
 
 
-- Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. If the `kubectl` command returns `command not found`, you will have to install the kubernetes CLI separately. Instructions can be found on the [official page](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or on the [IBM Cloud CLI page](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cs_cli_install_steps).
+- Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. If the `kubectl` command returns `command not found`, you will have to install the kubernetes CLI plugin separately. More information on the latter can be found in the Troubleshooting section at the bottom of this tutorial.
 
   ```
   kubectl get nodes
@@ -234,6 +234,10 @@ An easy way to detect general issues with your Kubernetes cluster is to visit th
 **Memory issues and killed containers**
 
 When trying to deploy a model with above-average memory requirements (for example the MAX-Image-Resolution-Enhancer), you will run into a 'TypeError: Failed to fetch' error. Although the frontend is still responsive, this error often means that the container was killed and restarted due to exceeding the memory limit after posting an input image. In this case, you will need to upgrade to a standard Kubernetes cluster in order to choose the specifications of the worker nodes. Increasing the resources of the node solves this issue.
+
+**Can't find the kubectl command**
+
+Most likely, this means that you are working with an older version of the IBM Cloud CLI for which the Kubernetes CLI was not included in the package. Verify that the `container-service/kubernetes-service` plugin is not present by executing the `ibmcloud plugin list` command. Run the `ibmcloud plugin install container-service` command to install the plugin, or [reinstall](https://cloud.ibm.com/docs/cli?topic=cloud-cli-uninstall-ibmcloud-cli) the IBM Cloud CLI. More information can be found on the [official Kubernetes page](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or on the [IBM Cloud CLI page](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cs_cli_install_steps).
 
 
 ## Summary
