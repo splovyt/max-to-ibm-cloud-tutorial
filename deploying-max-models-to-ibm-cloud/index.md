@@ -221,23 +221,23 @@ Scaling an application with Kubernetes is nothing more than clicking a button. A
 
   - Show the existing deployments and note down the deployment name.
 
-  ```
-  kubectl get deployments
-  ```
+    ```
+    kubectl get deployments
+    ```
 
   - With the deployment name, we can expose this deployment to a public IP address and port using the following command. Replace `<DEPLOYMENT_NAME>` with the name of the deployment, and replace `<SERVICE_NAME>` with a custom name for your microservice. The `target-port` flag will point to the port of the running container, which is set to 5000 by default for MAX models. The port that we want to expose on the public IP address can be set with the `port` flag. Here, we specify the port to be `80`.
 
-  ```
-  kubectl expose deployment <DEPLOYMENT_NAME> --port=80 --target-port=5000 --name=<SERVICE_NAME> --type=LoadBalancer --load-balancer-ip=''
-  ```
+    ```
+    kubectl expose deployment <DEPLOYMENT_NAME> --port=80 --target-port=5000 --name=<SERVICE_NAME> --type=LoadBalancer --load-balancer-ip=''
+    ```
 
   - The public IP and port are now being configured as part of the service. When done (can be a couple minutes), the external IP address will show up in the output of the following command.
 
-  ```
-  kubectl get service --watch
-  ```
+    ```
+    kubectl get service --watch
+    ```
 
-  - You can verify that your service is up and running by typing the IP address and port in the browser like so http://<IP>:<PORT>.
+  - You can verify that your service is up and running by typing the IP address and port in the browser like so ```http://<IP>:<PORT>```.
 
 _More information can be found in [this](https://github.com/CODAIT/MAX-cloud-deployment-cheatsheets/tree/master/ibm-cloud) GitHub repository._
 
