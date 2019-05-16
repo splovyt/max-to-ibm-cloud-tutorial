@@ -215,6 +215,33 @@ IBM Cloud CLI:
 
 Scaling an application with Kubernetes is nothing more than clicking a button. Adding worker nodes (computation units) or specifying advanced cluster parameters (e.g. more RAM) can easily be done from the Cloud Dashboard. However, you'll have to upgrade to a standard cluster in order to access these. With more worker nodes, a single node's public IP address does not suffice, so services like [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and [Loadbalancer](https://kubernetes.io/docs/concepts/services-networking/ingress/) will need to be added as well.
 
+* With a standard IBM Cloud account, we can scale the Kubernetes cluster easily beyond the 2vCPU and 4 GB RAM specifications of the free cluster. This entire process can be done from the Kubernetes dashboard after upgrading your account.
+
+* To expose a public IP address on the deployment level instead of on the node level, a user of a standard account can easily set up a [Loadbalancer](https://kubernetes.io/docs/concepts/services-networking/ingress/) in a couple easy steps.
+
+  - Show the existing deployments and note down the deployment name.
+
+  ```
+  kubectl get deployments
+  ```
+
+  - With the deployment name, we can expose this deployment to a public IP address and port using the following command. Replace `<DEPLOYMENT_NAME>` with the name of the deployment, and replace `<SERVICE_NAME>` with a custom name for your microservice. The `target-port` flag will point to the port of the running container, which is set to 5000 by default for MAX models. The port that we want to expose on the public IP address can be set with the `port` flag. Here, we specify the port to be `80`.
+
+  ```
+  kubectl expose deployment <DEPLOYMENT_NAME> --port=80 --target-port=5000 --name=<SERVICE_NAME> --type=LoadBalancer --load-balancer-ip=''
+  ```
+
+  - The public IP and port are now being configured as part of the service. When done (can be a couple minutes), the external IP address will show up in the output of the following command.
+
+  ```
+  kubectl get service --watch
+  ```
+
+  - You can verify that your service is up and running by typing the IP address and port in the browser like so http://<IP>:<PORT>.
+
+_More information can be found in [this](https://github.com/CODAIT/MAX-cloud-deployment-cheatsheets/tree/master/ibm-cloud) GitHub repository._
+
+
 ### Troubleshooting
 
 An easy way to detect general issues with your Kubernetes cluster is to visit the Kubernetes Dashboard on IBM Cloud. Any critical or pending worker nodes will be highlighted. In addition, you can run the following commands in the terminal.
