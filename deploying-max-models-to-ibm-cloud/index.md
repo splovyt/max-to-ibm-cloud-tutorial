@@ -10,6 +10,8 @@ pwg:
 related_content:
   - type: series
     slug: create-model-asset-exchange
+  - type: series
+    slug: kubernetes-learning-path
   - type: articles
     slug: introduction-to-the-model-asset-exchange-on-ibm-developer
   - type: tutorials
@@ -47,9 +49,6 @@ subtitle: 'Learn how to deploy deep learning models from the Model Asset Exchang
 
 ---
 
-Looking to deploy a MAX model to IBM Cloud? Smart!
-
-Fortunately, it's not only easy, but also free. 
 
 ## Learning objective
 
