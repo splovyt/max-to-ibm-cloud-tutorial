@@ -171,44 +171,44 @@ The MAX model is now permanently available. Congratulations!
 
 Kubernetes CLI:
     
-    ```
-    # Show the log of all events
-    kubectl get events
-    
-    # Show all pods
-    kubectl get pods
-    
-    # Show all services
-    kubectl get services
-    
-    # Show all deployments
-    kubectl get deployments
-    
-    # Show the details of a service
-    kubectl describe service SERVICE_NAME
-    
-    # Show the details of a node
-    kubectl describe node NODE_NAME
-    
-    # Delete a service
-    kubectl delete services SERVICE_NAME
-    
-    # Delete a deployment
-    kubectl delete deployment DEPLOYMENT_NAME
-    
-    # Debugging a pod
-    kubectl logs POD_NAME
-    ```
+  ```
+  # Show the log of all events
+  kubectl get events
+  
+  # Show all pods
+  kubectl get pods
+  
+  # Show all services
+  kubectl get services
+  
+  # Show all deployments
+  kubectl get deployments
+  
+  # Show the details of a service
+  kubectl describe service SERVICE_NAME
+  
+  # Show the details of a node
+  kubectl describe node NODE_NAME
+  
+  # Delete a service
+  kubectl delete services SERVICE_NAME
+  
+  # Delete a deployment
+  kubectl delete deployment DEPLOYMENT_NAME
+  
+  # Debugging a pod
+  kubectl logs POD_NAME
+  ```
 
 IBM Cloud CLI:
 
-    ```
-    # Show all clusters
-    ibmcloud cs clusters
-    
-    # Show the workers of a specific cluster
-    ibmcloud cs workers CLUSTER_NAME
-    ```
+  ```
+  # Show all clusters
+  ibmcloud cs clusters
+  
+  # Show the workers of a specific cluster
+  ibmcloud cs workers CLUSTER_NAME
+  ```
 
 **Further scaling**
 
