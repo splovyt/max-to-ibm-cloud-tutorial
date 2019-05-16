@@ -110,7 +110,7 @@ NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gav
     ```
 
 
-- Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it exports the required ```KUBECONFIG``` environment variable. 
+- Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it sets the required ```KUBECONFIG``` environment variable accordingly. 
 
 
 - Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. If the `kubectl` command returns `command not found`, you will have to install the kubernetes CLI plugin separately. More information on the latter can be found in the Troubleshooting section at the bottom of this tutorial.
