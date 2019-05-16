@@ -75,6 +75,7 @@ This tutorial consists of the following steps:
 * [Accessing the Kubernetes cluster](#1-accessing-the-kubernetes-cluster)
 * [Deploying the MAX model](#2-deploying-the-max-model)
 
+A troubleshooting section can be found at the bottom of this tutorial.
 
 ### 1. Accessing the Kubernetes cluster
 
