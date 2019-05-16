@@ -112,7 +112,7 @@ NOTE: Replace the last argument (`max-deployment-cluster`) with the name you gav
 - Copy the output from the previous command and paste it in your terminal. The command starts with ```export KUBECONFIG=...```. This command needs to be executed because it exports the required ```KUBECONFIG``` environment variable. 
 
 
-- Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. 
+- Verify that you can connect to your cluster by listing your worker nodes. The `kubectl` commands are part of the Kubernetes CLI, which was installed in the same process as the IBM Cloud CLI. If the `kubectl` command returns `command not found`, you will have to install the kubernetes CLI separately. Instructions can be found on the [official page](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or on the [IBM Cloud CLI page](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cs_cli_install_steps).
 
   ```
   kubectl get nodes
@@ -220,15 +220,15 @@ An easy way to detect general issues with your Kubernetes cluster is to visit th
 
 - Check Kubernetes events
 
-    ```
-    kubectl get events
-    ```
+  ```
+  kubectl get events
+  ```
 
 - Get the logs for a pod
 
-    ```
-    kubectl logs POD_NAME
-    ```
+  ```
+  kubectl logs POD_NAME
+  ```
 
 
 **Memory issues and killed containers**
