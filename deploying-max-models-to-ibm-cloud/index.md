@@ -147,17 +147,17 @@ Let's download the model's repository, which contains the YAML configuration fil
         ibmcloud cs workers mycluster
         ```
 
-    * The port
+    * The port (replace `max-object-detector` with the service name corresponding to your model)
 
         ```
-        kubectl describe service max-text-sentiment-classifier | grep NodePort
+        kubectl describe service max-object-detector | grep NodePort
         ```
 
 1. Navigate to the `http://<PUBLIC_IP>:<PORT>` address in your browser. You should find the API front end as shown in the following image.
 
     ![MAX object detector api](images/object-detector-api.png)
 
-The MAX model is now permanently available. Congratulations!
+This means that the MAX model has been successfully deployed. Congratulations!
 
 ##### Some useful commands
 
@@ -204,7 +204,7 @@ ibmcloud cs workers CLUSTER_NAME
 
 ##### Further scaling
 
-Scaling a Kubernetes-powered application beyond the 2vCPU and 4 GB RAM specifications of the free cluster is as easy as clicking a button. Adding worker nodes (computation units) or specifying advanced cluster parameters (for example, more CPU or RAM) can be done easily from the Cloud Dashboard. However, you must upgrade to a standard cluster to access these.
+Scaling a Kubernetes-powered application beyond the 2vCPU and 4 GB RAM specifications of the free cluster is as easy as clicking a button. Adding worker nodes (computation units) or specifying advanced cluster parameters (for example, more CPU or RAM) can be done easily from the Cloud Dashboard. However, you must [upgrade to a standard cluster](https://cloud.ibm.com/docs/containers?topic=containers-cs_ov#cluster_types) to access these.
 
 Additionally, with more worker nodes, a single node's public IP address does not suffice. Therefore, services like [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) and [Loadbalancer](https://kubernetes.io/docs/concepts/services-networking/ingress/) must be added as well. Exposing a public IP address on the deployment level instead of on the node level with the Loadbalancer can be set up in a few easy steps as demonstrated below.
 
