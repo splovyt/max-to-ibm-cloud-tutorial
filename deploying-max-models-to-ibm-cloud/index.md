@@ -147,7 +147,9 @@ Let's download the model's repository, which contains the YAML configuration fil
         ibmcloud cs workers mycluster
         ```
 
-    * The port (replace `max-object-detector` with the service name corresponding to your model)
+    * The port 
+    
+        > Note: Replace `max-object-detector` with the service name corresponding to your model.
 
         ```
         kubectl describe service max-object-detector | grep NodePort
