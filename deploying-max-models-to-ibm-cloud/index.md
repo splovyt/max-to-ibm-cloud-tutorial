@@ -59,7 +59,7 @@ Additionally, you need the following:
 
 * An [IBM Cloud account](http://ibm.biz/CloudSignup). You can sign up for a free account.
 * An available Kubernetes cluster on your IBM Cloud account. The free cluster type will suffice. Create a Kubernetes cluster from the [IBM Cloud catalog](https://cloud.ibm.com/kubernetes/catalog/cluster).
-* The IBM Cloud command-line interface (CLI) installed. After creating a Cloud account and a Kubernetes cluster, you must communicate with the cluster using our local machine. [Installation instructions](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli) are available, or you can perform a web search for 'IBM Cloud CLI.'
+* The IBM Cloud command-line interface (CLI) installed. After creating a Cloud account and a Kubernetes cluster, you must communicate with the cluster using your local machine. [Installation instructions](https://cloud.ibm.com/docs/cli/reference/ibmcloud?topic=cloud-cli-ibmcloud-cli#ibmcloud-cli) are available, or you can perform a web search for 'IBM Cloud CLI.'
 
 ## Estimated time
 
@@ -76,9 +76,9 @@ A troubleshooting section can be found at the end of this tutorial.
 
 ### Step 1. Accessing the Kubernetes cluster
 
-With an IBM Cloud account available, a Kubernetes cluster created, and the Cloud CLI installed (see [Prerequisites](#prerequisites)), the actual deployment step itself is the easiest part. Begin by establishing the connection between the local machine and the Kubernetes cluster.
+With an IBM Cloud account available, a Kubernetes cluster created, and the Cloud CLI installed (see [Prerequisites](#prerequisites)), the actual deployment step itself is the easiest part. Begin by establishing the connection between your local machine and the Kubernetes cluster.
 
-Use the CLI to log in to IBM Cloud on the local machine and specify what cluster you are targeting in the cloud. All of these instructions are also available under the **Access tab** on the online page of your Kubernetes cluster. Go to this **Access tab** to ensure that you are working with the most up-to-date instructions.
+Use the CLI to log in to IBM Cloud on your local machine and specify what cluster you are targeting in the cloud. All of these instructions are also available under the **Access tab** on the online page of your Kubernetes cluster. Go to this **Access tab** to ensure that you are working with the most up-to-date instructions.
 
 ![IBM cloud access](images/ibm-cloud-access.png)
 
